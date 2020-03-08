@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Documents</title>
+</head>
+<body>
+<h1>Documents</h1>
+<table>
+    <thead>
+    <tr>
+        <td>description</td>
+    </tr>
+    </thead>
+    <tbody th:each="doc: ${docs}">
+    <tr>
+        <form method="get" th:action="@{/add_doc}">
+        <td th:text="${doc.description}"></td>
+        <td><input type="submit" value=" Нажми меня нежно "></td>
+        <td><input type="hidden" name="id" th:value="${doc.id}"></td>
+            <a th:href="@{/doc/{id}(id=${doc.id})}">Info</a>
+        </form>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
