@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add doc</title>
+    <h1>Please, add new doc</h1>
+</head>
+<body>
+<form action="#" method="post" th:action="@{/add_doc}" th:object="${document}">
+    <span th:errors="*{description}" th:if="${#fields.hasErrors('description')}">Description Error</span><br>
+    <input type="text" th:field="*{description}">
+    <input type="submit">
+</form>
+<p></p>
+<a href="${pageContext.request.contextPath}/documents" th:href="@{/documents}">Back to documents</a>
+</body>
+</html>
