@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Added doc</title>
+</head>
+<body>
+<h1>Document info</h1>
+<span>ID: </span> <span th:text="${document.id}">id</span>
+<br>
+<span>Unique Number: </span> <span th:text="${document.uniqueNumber}">unique number</span>
+<br>
+<span>Description: </span> <span th:text="${document.description}">description</span>
+<br>
+<br>
+<a href="${pageContext.request.contextPath}/documents" th:href="@{/documents}">Back to documents</a>
+</body>
+</html>

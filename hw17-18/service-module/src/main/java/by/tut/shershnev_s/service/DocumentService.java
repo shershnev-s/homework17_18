@@ -9,4 +9,8 @@ public interface DocumentService {
     DocumentDTO add(DocumentDTO documentDTO);
 
     List<DocumentDTO> findAll();
+
+    DocumentDTO findById(Long id);
+
+    void deleteByID(DocumentDTO documentDTO);
 }

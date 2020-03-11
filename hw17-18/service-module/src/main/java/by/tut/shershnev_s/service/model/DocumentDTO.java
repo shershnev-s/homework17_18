@@ -1,8 +1,14 @@
 package by.tut.shershnev_s.service.model;
 
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+
 public class DocumentDTO {
 
     private Long id;
+    @NotEmpty
+    @Size(max = 100)
     private String description;
     private String uniqueNumber;
 
@@ -28,14 +34,5 @@ public class DocumentDTO {
 
     public void setUniqueNumber(String uniqueNumber) {
         this.uniqueNumber = uniqueNumber;
-    }
-
-    @Override
-    public String toString() {
-        return "DocumentDTO{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", uniqueNumber='" + uniqueNumber + '\'' +
-                '}';
     }
 }

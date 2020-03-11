@@ -3,6 +3,7 @@ package by.tut.shershnev_s.repository;
 import by.tut.shershnev_s.repository.model.Document;
 import org.springframework.stereotype.Repository;
 
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
@@ -13,5 +14,9 @@ public interface DocumentRepository {
     Document add(Connection connection, Document document) throws SQLException;
 
     List<Document> findAll(Connection connection) throws SQLException;
+
+    Document findById(Connection connection, Long id) throws SQLException;
+
+    void deleteByID(Connection connection, Long id) throws SQLException;
 
 }

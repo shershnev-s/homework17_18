@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -10,19 +10,31 @@
 <table>
     <thead>
     <tr>
-        <td>description</td>
+        <td>Description</td>
+        <td>Delete</td>
+        <td>Information</td>
     </tr>
     </thead>
     <tbody th:each="doc: ${docs}">
     <tr>
         <form method="get" th:action="@{/add_doc}">
-        <td th:text="${doc.description}"></td>
-        <td><input type="submit" value=" Нажми меня нежно "></td>
-        <td><input type="hidden" name="id" th:value="${doc.id}"></td>
-            <a th:href="@{/doc/{id}(id=${doc.id})}">Info</a>
+            <td th:text="${doc.description}"></td>
+            <td>
+                <a href="${pageContext.request.contextPath}/delete?id=${doc.id}"
+                   th:href="@{/delete/{id}(id=${doc.id})}"> Delete </a>
+            </td>
+            <td>
+                <a href="${pageContext.request.contextPath}/doc?id=${doc.id}}" th:href="@{/doc/{id}(id=${doc.id})}">
+                    Info </a>
+            </td>
+            <td>
+                <input type="hidden" name="id" th:value="${doc.id}">
+            </td>
         </form>
     </tr>
     </tbody>
 </table>
+<p></p>
+<a href="${pageContext.request.contextPath}/add_doc" th:href="@{add_doc}"> Add new doc </a>
 </body>
 </html>

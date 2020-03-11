@@ -55,6 +55,39 @@ public class DocumentRepositoryImpl implements DocumentRepository {
         }
     }
 
+    @Override
+    public Document findById(Connection connection, Long id) throws SQLException {
+        try (
+                PreparedStatement statement = connection.prepareStatement(
+                        "SELECT id, unique_number, description FROM document WHERE id=?; "
+                )
+        ) {
+            statement.setLong(1,id);
+            try (ResultSet rs = statement.executeQuery()) {
+                while (rs.next()) {
+                    Document document = getDocs(rs);
+                    return document;
+                }
+                return null;
+            }
+        }
+    }
+
+    @Override
+    public void deleteByID(Connection connection, Long id) throws SQLException {
+        try (
+                PreparedStatement statement = connection.prepareStatement(
+                        "DELETE FROM document WHERE id =?"
+                )
+        ) {
+            statement.setLong(1, id);
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Deleting document failed, no rows affected.");
+            }
+        }
+    }
+
     private Document getDocs(ResultSet rs) throws SQLException {
        Document document = new Document();
        document.setId(rs.getLong("id"));
